@@ -24,8 +24,11 @@ Underwater information sensing and transmission is very essential but use of hum
 
 ## Components Required with Bill of Materials
 Hardware: Arduino Uno R3, Ultrasonic Waterproof sensor, H-bridge [L293D] IC, Joysticks, Thrusters, Li-ion battery, Tether Cables
+
 Software: Arduino IDE
+
 Communication: Bluetooth module for data transmission.
+
 Interface: Mobile screen.
 
 
