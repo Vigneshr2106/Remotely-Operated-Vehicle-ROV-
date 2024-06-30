@@ -30,40 +30,72 @@ Interface: Mobile screen.
 
 
 Particulars	Estimated Cost in INR
+
  1	Underwater thruster motor (1pair)	3400
+ 
  2	Joysticks (1 pair)	40 
+ 
  3	Arduino board	425 
+ 
  4	Waterproof Ultrasonic sensor	250 
+ 
  5	Waterproof temperature sensor	70 
+ 
  6	Bluetooth module	300 
+ 
  7	Li-ion battery	250 
+ 
  8	Breadboard & Jumper wires	50 
+ 
  9	Tether cables	40 
+ 
  10	H-bridge IC 	6
+ 
  11	Container	150
-Total Cost	
+ 
+Total Cost
+
 INR 4,981
 
 
 ## Table for Pin Connections
+
 COMPONENT	CONNECTION DETAILS
+
 Pin 1	Arduino pin 11
+
 Pin 2	Arduino pin 12
+
 Pin 3	Right motor negative wire
+
 Pin 6	Right motor positive wire
+
 Pin 7	Arduino pin 9
+
 Pin 8	7.4 V from the battery
+
 Pin 9	Arduino pin 10
+
 Pin 10	Arduino pin 8
+
 Pin 11	Left motor positive wire
+
 Pin 14	Left motor negative wire
+
 Pin 15	Arduino pin 7
+
 Pin 16	5 V from Arduino Joystick	
+
 L/R+ of both Joysticks	5 V from Arduino
+
 L/R [Left Joystick]	Arduino analog pin A0
+
 L/R [Right Joystick]	Arduino analog pin A1
+
 Battery	
+
 Positive Wire	Arduino Vin pin
+
 Negative Wire	Arduino GND pin
 
 
