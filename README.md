@@ -111,4 +111,5 @@ Negative Wire	Arduino GND pin
 
 ## Demo Video
 
-https://github.com/Vigneshr2106/Remotely-Operated-Vehicle-ROV-/issues/2#issue-2390728089
+https://github.com/Vigneshr2106/Remotely-Operated-Vehicle-ROV-/assets/165415082/28e736f9-6113-4dae-a2c7-bd2a89081963
+
