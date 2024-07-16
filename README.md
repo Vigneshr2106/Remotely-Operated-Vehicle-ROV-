@@ -1,26 +1,26 @@
 # Remotely-Operated-Vehicle-ROV-
 
 ## Introduction
-A Remotely Operated Vehicle (ROV) is an unmanned, highly maneuverable underwater robot typically operated by a person aboard a vessel or onshore
-providing a safe and efficient means to explore, inspect, and work in underwater environments. ROVs are equipped with cameras, lights, and various tools
+A Remotely Operated Vehicle (ROV) is an unmanned, highly maneuverable robot typically operated by a person aboard a vessel or onshore
+providing a safe and efficient means to explore, inspect water bodies. ROVs are equipped with cameras, lights, and various tools
 allowing operators to perform a wide range of tasks such as underwater research, inspection of underwater structures
 marine salvage operations, and maintenance of oil rigs and pipelines. 
 These versatile machines play a crucial role in industries such as marine biology, oceanography, underwater archaeology, and offshore energy production
-offering an effective solution to the challenges of underwater operations without risking human divers.
+offering an effective solution to the challenges of exploring water bodies without risking human divers.
 
 
 ## Overview
-A Remotely Operated Vehicle (ROV) is an unmanned, underwater robot controlled by operators from a remote location. 
-ROVs are designed to explore, inspect, and perform tasks in underwater environments, providing a safe and efficient alternative to human divers.
-Real-time Sensor Data: Accurate readings from DS18B20 temperature sensor and RCWL1655 ultrasonic sensor for immediate environmental monitoring underwater.
+A Remotely Operated Vehicle (ROV) is an unmanned robot controlled by operators from a remote location. 
+ROVs are designed to explore, inspect, and perform tasks in water environments, providing a safe and efficient alternative to human divers.
+Real-time Sensor Data: Accurate readings from DS18B20 temperature sensor and RCWL1655 ultrasonic sensor for immediate environmental monitoring water bodies.
 Joystick-Controlled Thrusters: Precise manoeuvrability facilitated by L293D H-bridge, enabling responsive control of thrusters via joystick inputs.
 Wireless Communication: Seamless interaction through HC05 Bluetooth module, allowing real-time data transmission and intuitive control via mobile devices.
 User Interface: Mobile device interface for intuitive monitoring of sensor data and control of the ROV, enhancing usability and operational efficiency.
-Underwater Exploration: Designed for safe and efficient data collection and navigation in underwater environments, supporting various exploration and research applications.
 
 
 ## Problem Statement
-Underwater information sensing and transmission is very essential but use of human beings to collect this information is highly dangerous and inaccurate.
+Water bodies such as oceans, seas, rivers, and lakes hold immense ecological, scientific, and economic importance. However, their vastness and depth present significant challenges for exploration and monitoring. Remotely Operated Vehicles (ROVs) offer a promising solution for water bodies exploration, allowing researchers and professionals to gather data and monitor marine environments without direct human intervention.
+
 
 ## Components Required with Bill of Materials
 Hardware: Arduino Uno R3, Ultrasonic Waterproof sensor, H-bridge [L293D] IC, Joysticks, Thrusters, Li-ion battery, Tether Cables
@@ -34,7 +34,7 @@ Interface: Mobile screen.
 
 Particulars	Estimated Cost in INR
 
- 1	Underwater thruster motor (1pair)	3400
+ 1	thruster motor (1pair)	3400
  
  2	Joysticks (1 pair)	40 
  
