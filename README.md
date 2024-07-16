@@ -278,9 +278,11 @@ void loop() {
      
    motorLspeed = map(joyL, joyLneutral, 0, 0, 255);
      
-    } 
+  } 
     
-   else if ((joyL - joyLneutral) > deadzone) {
+   else if ((joyL - joyLneutral) > deadzone)
+   
+   {
      
    // Joystick pulled backward
      
@@ -290,7 +292,11 @@ void loop() {
       
    motorLspeed = map(joyL, joyLneutral, 1023, 0, 255);
    
-   } else {
+   } 
+   
+   else 
+   
+   {
      
    // Joystick in neutral position
    
@@ -305,6 +311,7 @@ void loop() {
  // Control right motor based on right joystick
  
  if ((joyR - joyRneutral) < -deadzone) 
+
  {
  
  // Joystick pushed forward
@@ -316,6 +323,7 @@ void loop() {
  motorRspeed = map(joyR, joyRneutral, 0, 0, 255);
  
 }
+
 else if ((joyR - joyRneutral) > deadzone) 
 
 {
@@ -329,7 +337,9 @@ digitalWrite(motorRbck, HIGH);
 motorRspeed = map(joyR, joyRneutral, 1023, 0, 255);
 
 } 
+
 else 
+
 {
 
 // Joystick in neutral position
@@ -339,6 +349,7 @@ digitalWrite(motorRfwd, LOW);
 digitalWrite(motorRbck, LOW);
 
 motorRspeed = 0;
+
  }
  
  // Set motor speeds
