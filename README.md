@@ -264,14 +264,16 @@ void loop() {
   else 
   
   {
-    // Control left motor based on left joystick
+  
+  // Control left motor based on left joystick
     
    if ((joyL - joyLneutral) < -deadzone) 
    
    {
-     // Joystick pushed forward
+   
+   // Joystick pushed forward
      
-  digitalWrite(motorLfwd, HIGH);
+   digitalWrite(motorLfwd, HIGH);
      
    digitalWrite(motorLbck, LOW);
      
