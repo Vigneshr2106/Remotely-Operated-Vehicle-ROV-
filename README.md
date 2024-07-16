@@ -105,6 +105,254 @@ Negative Wire	Arduino GND pin
 ## Pinout Diagram
 ![image](https://github.com/Vigneshr2106/Remotely-Operated-Vehicle-ROV-/assets/165021886/56ead2ec-9ce6-46ae-9217-9760139daf04)
 
+## Working Code
+
+#include <SoftwareSerial.h>
+
+// Pins for the joysticks
+
+const int joyLpin = A0; // left joystick
+
+const int joyRpin = A1; // right joystick
+
+// Pins for the motors
+
+const int motorLfwd = 7;  // left motor forward pin
+
+const int motorLbck = 8;  // left motor backward pin
+
+const int motorLen = 10;  // left motor enable pin
+
+const int motorRfwd = 9;  // right motor forward pin
+
+const int motorRbck = 12; // right motor backward pin
+
+const int motorRen = 11;  // right motor enable pin
+
+// Pins for the HC-05 module
+
+const int bluetoothTx = 10; // TX on Arduino
+
+const int bluetoothRx = 11; // RX on Arduino
+
+// Pins for the HC-SR04 sensor
+
+const int trigPin = 9;
+
+const int echoPin = 8;
+
+// Create a software serial port
+
+SoftwareSerial bluetooth(bluetoothTx, bluetoothRx);
+
+// Variables for joystick readings
+
+int joyL; // left joystick reading (0-1023 from ADC)
+
+int joyR; // right joystick reading (0-1023 from ADC)
+
+int joyLneutral; // left joystick neutral position
+
+int joyRneutral; // right joystick neutral position
+
+const int deadzone = 20; // joystick "dead zone" to prevent drift
+
+int motorLspeed; // left motor speed (0-255 for PWM)
+
+int motorRspeed; // right motor speed (0-255 for PWM)
+
+// Ultrasonic sensor variables
+
+long duration;
+
+float distanceCm;
+
+void setup() {
+
+  // Set motor control pins as outputs
+  
+  pinMode(motorLfwd, OUTPUT);
+  
+  pinMode(motorRfwd, OUTPUT);
+  
+  pinMode(motorLbck, OUTPUT);
+  
+  pinMode(motorRbck, OUTPUT);
+  
+  pinMode(motorLen, OUTPUT);
+  
+  pinMode(motorRen, OUTPUT);
+  
+  // Initialize the HC-SR04 sensor pins
+  
+  pinMode(trigPin, OUTPUT);
+  
+  pinMode(echoPin, INPUT);
+  
+  // Start serial communication with the PC
+  
+  Serial.begin(9600);
+  
+  Serial.println("Joystick and Ultrasonic Sensor with Bluetooth HC-05");
+  
+  // Start serial communication with the HC-05
+  
+  bluetooth.begin(9600);
+  
+  // Calibrate joysticks
+  
+  joyLneutral = analogRead(joyLpin);
+  
+  joyRneutral = analogRead(joyRpin);
+  
+}
+
+void loop() {
+
+  // Read joysticks
+  
+  joyL = analogRead(joyLpin);
+  
+  joyR = analogRead(joyRpin);
+  
+  // Read ultrasonic sensor
+  
+  digitalWrite(trigPin, LOW);
+  
+  delayMicroseconds(2);
+  
+  digitalWrite(trigPin, HIGH);
+  
+  delayMicroseconds(10);
+  
+  digitalWrite(trigPin, LOW);
+  
+  duration = pulseIn(echoPin, HIGH);
+  
+  distanceCm = duration * 0.034 / 2;
+  
+  // Send distance to the serial monitor and Bluetooth
+  
+  bluetooth.print("Distance: ");
+  
+  bluetooth.print(distanceCm);
+  
+  bluetooth.println(" cm");
+  
+  // Check if an object is detected within 19 cm
+  
+  if (distanceCm <= 19) {
+  
+   // Stop both motors
+     
+   digitalWrite(motorLfwd, LOW);
+    
+   digitalWrite(motorLbck, LOW);
+    
+   digitalWrite(motorRfwd, LOW);
+    
+   digitalWrite(motorRbck, LOW);
+    
+   analogWrite(motorLen, 0);
+    
+   analogWrite(motorRen, 0);
+    
+   Serial.println("Object detected! Stopping motors.");
+    
+  }
+  
+  else 
+  
+  {
+    // Control left motor based on left joystick
+    
+   if ((joyL - joyLneutral) < -deadzone) 
+   
+   {
+     // Joystick pushed forward
+     
+  digitalWrite(motorLfwd, HIGH);
+     
+   digitalWrite(motorLbck, LOW);
+     
+     
+   motorLspeed = map(joyL, joyLneutral, 0, 0, 255);
+     
+    } 
+    
+   else if ((joyL - joyLneutral) > deadzone) {
+     
+   // Joystick pulled backward
+     
+   digitalWrite(motorLfwd, LOW);
+      
+   digitalWrite(motorLbck, HIGH);
+      
+   motorLspeed = map(joyL, joyLneutral, 1023, 0, 255);
+   
+   } else {
+     
+   // Joystick in neutral position
+   
+   digitalWrite(motorLfwd, LOW);
+   
+   digitalWrite(motorLbck, LOW);
+   
+   motorLspeed = 0;
+   
+  }
+  
+ // Control right motor based on right joystick
+ 
+ if ((joyR - joyRneutral) < -deadzone) 
+ {
+ 
+ // Joystick pushed forward
+ 
+ digitalWrite(motorRfwd, HIGH);
+ 
+ digitalWrite(motorRbck, LOW);
+ 
+ motorRspeed = map(joyR, joyRneutral, 0, 0, 255);
+ 
+}
+else if ((joyR - joyRneutral) > deadzone) 
+
+{
+
+// Joystick pulled backward
+
+digitalWrite(motorRfwd, LOW);
+
+digitalWrite(motorRbck, HIGH);
+
+motorRspeed = map(joyR, joyRneutral, 1023, 0, 255);
+
+} 
+else 
+{
+
+// Joystick in neutral position
+
+digitalWrite(motorRfwd, LOW);
+
+digitalWrite(motorRbck, LOW);
+
+motorRspeed = 0;
+ }
+ 
+ // Set motor speeds
+ 
+analogWrite(motorLen, motorLspeed);
+
+analogWrite(motorRen, motorRspeed);
+
+}
+
+delay(100);
+
+}
+
 
 ## Demo Video
 
